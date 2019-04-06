@@ -1,0 +1,9 @@
+{
+  "name": "uber-server",
+  "version": "1.0.0",
+  "description": "cloning the uber application",
+  "main": "index.js",
+  "repository": "https://github.com/harrycjy1/uber-clone.git",
+  "author": "choddol",
+  "license": "MIT"
+}
