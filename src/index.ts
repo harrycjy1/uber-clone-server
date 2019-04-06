@@ -1,0 +1,18 @@
+import app from "./app";
+import { Options } from "graphql-yoga";
+
+const PORT: string | number = process.env.port || 4000;
+const PLAYGROUND_ENDPOINT: string = "/playground";
+const GRAPHQL_ENDPOINT: string = "/graphql";
+
+const Options: Options = {
+  port: PORT,
+  playground: PLAYGROUND_ENDPOINT,
+  endpoint: GRAPHQL_ENDPOINT
+};
+
+const handleAppStart = (): void => {
+  console.log(`server started at ${PORT} port`);
+};
+
+app.start(Options, handleAppStart);
