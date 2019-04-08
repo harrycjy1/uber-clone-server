@@ -1,10 +1,10 @@
-import { Greeting } from "src/types/graph";
+import { HelloResponse, SayHelloQueryArgs } from "src/types/graph";
 
 const resolvers = {
   Query: {
-    sayHello: (): Greeting => {
+    sayHello: (_, args: SayHelloQueryArgs): HelloResponse => {
       return {
-        text: "hey",
+        text: `hey ${args.name} how are you`,
         error: false
       };
     }
