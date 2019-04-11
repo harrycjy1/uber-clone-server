@@ -6,10 +6,14 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BeforeInsert,
-  BeforeUpdate
+  BeforeUpdate,
+  OneToMany,
+  ManyToOne
 } from "typeorm";
 import { IsEmail } from "class-validator";
 import bcrypt from "bcrypt";
+import Message from "./Message";
+import Chat from "./Chat";
 
 const HASH_ROUND = 10;
 
@@ -45,11 +49,6 @@ class User extends BaseEntity {
   @Column({ type: "text" })
   profilePhoto: string;
 
-  @CreateDateColumn()
-  createdAt: string;
-  @UpdateDateColumn()
-  updatedAt: string;
-
   @Column({ type: "boolean", default: false })
   isDriving: boolean;
   @Column({ type: "boolean", default: false })
@@ -63,6 +62,17 @@ class User extends BaseEntity {
   lastLat: number;
   @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
+
+  @ManyToOne(type => Chat, chat => chat.participants)
+  chat: Chat;
+
+  @OneToMany(type => Message, message => message.user)
+  messages: Message[];
+
+  @CreateDateColumn()
+  createdAt: string;
+  @UpdateDateColumn()
+  updatedAt: string;
 
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
