@@ -14,7 +14,6 @@ import { IsEmail } from "class-validator";
 import bcrypt from "bcrypt";
 import Message from "./Message";
 import Chat from "./Chat";
-import Verification from "./Verification";
 import Ride from "./Ride";
 
 const HASH_ROUND = 10;
@@ -25,7 +24,7 @@ class User extends BaseEntity {
   id: number;
 
   @IsEmail()
-  email: string;
+  email: string | null;
 
   @Column({ type: "boolean", default: false })
   verifiedEmail: boolean;
@@ -73,9 +72,6 @@ class User extends BaseEntity {
 
   @OneToMany(type => Message, message => message.user)
   messages: Message[];
-
-  @OneToMany(type => Verification, verification => verification.user)
-  verifications: Verification[];
 
   @OneToMany(type => Ride, ride => ride.passenger)
   rideAsPassenger: Ride[];

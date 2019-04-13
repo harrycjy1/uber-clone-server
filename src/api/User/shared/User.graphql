@@ -1,6 +1,6 @@
 type User {
   id: Int!
-  email: String!
+  email: String
   verifiedEmail: Boolean!
   firstName: String!
   lastName: String!
@@ -19,7 +19,6 @@ type User {
   lastOrientation: Float
   chat: Chat
   messages: [Message]
-  verifications: [Verification]
   rideAsDriver: [Ride]
   rideAsPassenger: [Ride]
   createdAt: String!

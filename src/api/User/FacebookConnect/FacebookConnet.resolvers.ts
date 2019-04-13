@@ -3,8 +3,7 @@ import {
   FacebookConnectMutationArgs,
   FacebookConnectResponse
 } from "src/types/graph";
-import User from "src/entities/User";
-import { TreeLevelColumn } from "typeorm";
+import User from "../../../entities/User";
 
 const Resolvers: Resolvers = {
   Mutation: {
