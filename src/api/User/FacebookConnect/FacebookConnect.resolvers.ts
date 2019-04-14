@@ -5,9 +5,9 @@ import {
 } from "src/types/graph";
 import User from "../../../entities/User";
 
-const Resolvers: Resolvers = {
+const resolvers: Resolvers = {
   Mutation: {
-    FaceBookConnect: async (
+    FacebookConnect: async (
       _,
       args: FacebookConnectMutationArgs
     ): Promise<FacebookConnectResponse> => {
@@ -50,4 +50,4 @@ const Resolvers: Resolvers = {
   }
 };
 
-export default Resolvers;
+export default resolvers;
