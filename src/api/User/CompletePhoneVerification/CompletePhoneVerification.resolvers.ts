@@ -5,6 +5,7 @@ import {
 } from "../../../types/graph";
 import Verification from "../../../entities/Verification";
 import User from "../../../entities/User";
+import createJWT from "../../../utils/createJWT";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -42,10 +43,11 @@ const resolvers: Resolvers = {
         if (user) {
           user.verifiedPhoneNumber = true;
           user.save();
+          const token = createJWT(user.id);
           return {
             ok: true,
             error: null,
-            token: "coming soon"
+            token
           };
           //유저가 존재하지 않는다면 토큰을 제공해 주지 않고 프론트에서 이를 가지고 다른 화면으로 처리할 거다
         } else {
