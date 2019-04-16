@@ -10,7 +10,7 @@ import {
 @Entity()
 class Place extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
   @Column({ type: "text" })
   name: string;
   @Column({ type: "double precision", default: 0 })

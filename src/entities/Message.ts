@@ -14,7 +14,7 @@ import User from "./User";
 @Entity()
 class Message extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column({ type: "text" })
   text: string;

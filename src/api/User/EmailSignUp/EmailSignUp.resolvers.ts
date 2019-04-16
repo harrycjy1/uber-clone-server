@@ -22,14 +22,15 @@ const resolvers: Resolvers = {
             error: "u already signed up!",
             token: null
           };
+        } else {
+          const newUser = await User.create({ ...args }).save();
+          const token = createJWT(newUser.id);
+          return {
+            ok: true,
+            error: null,
+            token
+          };
         }
-        const newUser = await User.create({ ...args }).save();
-        const token = createJWT(newUser.id);
-        return {
-          ok: true,
-          error: null,
-          token
-        };
       } catch (error) {
         return {
           ok: false,

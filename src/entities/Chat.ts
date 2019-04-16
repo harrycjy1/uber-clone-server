@@ -13,7 +13,7 @@ import User from "./User";
 @Entity()
 class Chat extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @OneToMany(type => Message, message => message.chat)
   messages: Message[];

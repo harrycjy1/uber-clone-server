@@ -13,7 +13,7 @@ import User from "./User";
 @Entity()
 class Ride extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column({
     type: "text",
