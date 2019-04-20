@@ -7,6 +7,12 @@ import User from "../../../entities/User";
 import createJWT from "../../../utils/createJWT";
 
 const resolvers: Resolvers = {
+  Query: {
+    user: (parents, args, context) => {
+      console.log(context.req.user);
+      return "";
+    }
+  },
   Mutation: {
     FacebookConnect: async (
       _,
