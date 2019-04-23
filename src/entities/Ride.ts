@@ -32,8 +32,8 @@ class Ride extends BaseEntity {
   dropOffLat: number;
   @Column({ type: "double precision", default: 0 })
   dropOffLng: number;
-  @Column({ type: "text" })
-  price: string;
+  @Column({ type: "double precision", default: 0 })
+  price: number;
   @Column({ type: "text" })
   distance: string;
   @Column({ type: "text" })
