@@ -15,6 +15,7 @@ import bcrypt from "bcrypt";
 import Message from "./Message";
 import Chat from "./Chat";
 import Ride from "./Ride";
+import Place from "./Place";
 
 const HASH_ROUND = 10;
 
@@ -79,6 +80,9 @@ class User extends BaseEntity {
 
   @OneToMany(type => Ride, ride => ride.driver)
   rideAsDriver: Ride[];
+
+  @OneToMany(type => Place, place => place.user)
+  places: User[];
 
   @CreateDateColumn()
   createdAt: string;
