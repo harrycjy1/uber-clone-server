@@ -1,4 +1,5 @@
 import { Resolvers } from "../../../resolvers";
+
 import privateResolver from "../../../utils/privateResolver";
 import { EditPlaceMutationArgs, EditPlaceResponse } from "../../../types/graph";
 import User from "../../../entities/User";
@@ -19,8 +20,12 @@ const resolvers: Resolvers = {
           const place = await Place.findOne({ id: args.placeId });
           if (place) {
             if (place.userId === user.id) {
-              const checkedArgs = cleanNullArgs(args);
+              const checkedArgs: any = cleanNullArgs(args);
+              if (checkedArgs.placeId !== null) {
+                delete checkedArgs.placeId;
+              }
               await Place.update({ id: args.placeId }, { ...checkedArgs });
+
               return {
                 ok: true,
                 error: null

@@ -10,5 +10,5 @@ type Mutation {
     lng: Float!
     address: String!
     isFav: Boolean!
-  ): AddPlaceResponse
+  ): AddPlaceResponse!
 }

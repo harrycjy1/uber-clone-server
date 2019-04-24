@@ -21,19 +21,19 @@ type AddPlaceResponse {
 }
 
 type Mutation {
-  AddPlace(name: String!, lat: Float!, lng: Float!, address: String!, isFav: Boolean!): AddPlaceResponse
+  AddPlace(name: String!, lat: Float!, lng: Float!, address: String!, isFav: Boolean!): AddPlaceResponse!
   DeletePlace(placeId: Int!): DeletePlaceResponse
-  EditPlace(placeId: Int!, name: String, isFav: Boolean): EditPlaceResponse
+  EditPlace(placeId: Int!, name: String, isFav: Boolean): EditPlaceResponse!
   CompleteEmailVerification(key: String!): CompleteEmailVerificationResponse!
   CompletePhoneVerification(phoneNumber: String!, key: String!): CompletePhoneVerificationResponse!
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
   EmailSignUp(firstName: String!, lastName: String!, email: String!, profilePhoto: String!, phoneNumber: String!, age: Int!, password: String!): EmailSignUpResponse!
   FacebookConnect(firstName: String!, lastName: String!, fbId: String!, email: String): FacebookConnectResponse!
-  ReportMovement(lat: Float, lng: Float, orientation: Float): ReportMovementResponse!
+  ReportMovement(lastLat: Float, lastLng: Float, orientation: Float): ReportMovementResponse!
   RequestEmailVerification: RequestEmailVerificationResponse!
   StartPhoneVerification(phoneNumber: String!): StartPhoneVerificationResponse!
   ToggleDrivingMode: ToggleDrivingModeResponse!
-  UpdateMyProfile(firstName: String, lastName: String, email: String, profilePhoto: String, age: Int, password: String): UpdateMyProfileResponse
+  UpdateMyProfile(firstName: String, lastName: String, email: String, profilePhoto: String, age: Int, password: String): UpdateMyProfileResponse!
 }
 
 type DeletePlaceResponse {
@@ -55,6 +55,7 @@ type GetMyPlacesResponse {
 type Query {
   GetMyPlaces: GetMyPlacesResponse!
   GetMyProfile: GetMyProfileResponse!
+  GetNearbyDrivers: GetNearbyDriversResponse!
   user: User
 }
 
@@ -100,6 +101,10 @@ type CompletePhoneVerificationResponse {
   token: String
 }
 
+type Subscription {
+  DriversSubscription: User
+}
+
 type EmailSignInResponse {
   ok: Boolean!
   error: String
@@ -122,6 +127,12 @@ type GetMyProfileResponse {
   ok: Boolean!
   error: String
   user: User
+}
+
+type GetNearbyDriversResponse {
+  ok: Boolean!
+  error: String
+  drivers: [User]
 }
 
 type ReportMovementResponse {
