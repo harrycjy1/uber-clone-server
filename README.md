@@ -7,22 +7,22 @@ cloning the uber application
 ### Public Resolvers :
 
 - [x] Sign in / Sign Up with Facebook
-- [ ] Sign in with Email
-- [ ] Start Phone Number Verification
-- [ ] Complete Phone number Verification
-- [ ] Sign Up with Email
+- [x] Sign in with Email
+- [x] Start Phone Number Verification
+- [x] Complete Phone number Verification
+- [x] Sign Up with Email
 
-### Private Resolvers :
+### Private Resolvers :s
 
-- [ ] Verify Email
-- [ ] Get My Profile
-- [ ] Update my Profile
-- [ ] Toggle Driving Mode
-- [ ] Report Location / Orientation
-- [ ] Add Place
-- [ ] Edit Place
-- [ ] Delete Place
-- [ ] Get My Places
+- [x] Verify Email
+- [x] Get My Profile
+- [x] Update my Profile
+- [x] Toggle Driving Mode
+- [x] Report Location / Orientation
+- [x] Add Place
+- [x] Edit Place
+- [x] Delete Place
+- [x] Get My Places
 - [ ] See Nearby Drivers
 - [ ] Subscribe to Nearby Drivers
 - [ ] Request a Ride
