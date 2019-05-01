@@ -9,6 +9,7 @@ const resolvers: Resolvers = {
       async (_, __, { req }): Promise<ToggleDrivingModeResponse> => {
         const user: User = req.user;
         user.isDriving = !user.isDriving;
+        user.save();
         return {
           ok: true,
           error: null

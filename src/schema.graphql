@@ -29,7 +29,7 @@ type Mutation {
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
   EmailSignUp(firstName: String!, lastName: String!, email: String!, profilePhoto: String!, phoneNumber: String!, age: Int!, password: String!): EmailSignUpResponse!
   FacebookConnect(firstName: String!, lastName: String!, fbId: String!, email: String): FacebookConnectResponse!
-  ReportMovement(lastLat: Float, lastLng: Float, orientation: Float): ReportMovementResponse!
+  ReportMovement(lastLat: Float, lastLng: Float, lastOrientation: Float): ReportMovementResponse!
   RequestEmailVerification: RequestEmailVerificationResponse!
   StartPhoneVerification(phoneNumber: String!): StartPhoneVerificationResponse!
   ToggleDrivingMode: ToggleDrivingModeResponse!
