@@ -15,7 +15,7 @@ const resolvers: Resolvers = {
         args: UpdateMyProfileMutationArgs,
         { req }
       ): Promise<UpdateMyProfileResponse> => {
-        const user = req.user;
+        const user: User = req.user;
         //null이 넘어올수 있으니 null값을 제외하고 새로운 Object에 추가
         const checkNull: any = cleanNullArgs(args);
 
