@@ -1,0 +1,9 @@
+type GetNearByRideResponse {
+  ok: Boolean!
+  error: String
+  ride: Ride
+}
+
+type Mutation {
+  GetNearByRide: GetNearByRideResponse
+}
