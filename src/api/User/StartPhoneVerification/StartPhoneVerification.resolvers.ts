@@ -1,4 +1,3 @@
-import { Resolvers } from "src/resolvers";
 import {
   StartPhoneVerificationMutationArgs,
   StartPhoneVerificationResponse
@@ -6,6 +5,7 @@ import {
 
 import { sendVerificationSMS } from "../../../utils/sendSMS";
 import Verification from "../../../entities/Verification";
+import { Resolvers } from "../../../types/resolvers";
 
 const resolvers: Resolvers = {
   Mutation: {

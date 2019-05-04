@@ -1,21 +1,31 @@
-# uber-clone-server
+# nuber-server
 
-cloning the uber application
+Server for the (N)Uber Clone Course on Nomad Academy. GraphQL, Typescript, NodeJS
 
 ## Resolvers
 
-### Public Resolvers :
+### Public Resolvers:
 
-- [x] Sign in / Sign Up with Facebook
-- [x] Sign in with Email
+- [x] Sign In / Sign Up with Facebook
+- [x] Sign In with Email
 - [x] Start Phone Number Verification
-- [x] Complete Phone number Verification
+- [x] Complete Phone Number Verification
 - [x] Sign Up with Email
 
-### Private Resolvers :s
+---
 
-- [x] Verify Email
-- [x] Get My Profile
+### Authentication:
+
+- [x] Generate JWT
+- [x] Verifiy JWT
+
+---
+
+### Private Resolvers:
+
+- [x] Get my Profile
+- [x] Request Email Verification
+- [x] Complete Email Verification
 - [x] Update my Profile
 - [x] Toggle Driving Mode
 - [x] Report Location / Orientation
@@ -23,11 +33,13 @@ cloning the uber application
 - [x] Edit Place
 - [x] Delete Place
 - [x] Get My Places
-- [ ] See Nearby Drivers
-- [ ] Subscribe to Nearby Drivers
-- [ ] Request a Ride
-- [ ] Get Nearby Rides Requests
-- [ ] Subscribe to Nearby Ride Requests
+- [x] See Nearby Drivers
+- [x] Subscribe to Nearby Drivers
+- [x] Request a Ride
+- [x] Get Nearby Ride Requests
+- [x] Subscribe to Nearby Ride Requests
+- [x] Update Ride Status
+- [ ] Get Ride
 - [ ] Subscribe to Ride Status
 - [ ] Get Chat Room Messages
 - [ ] Subscribe to Chat Room Messages

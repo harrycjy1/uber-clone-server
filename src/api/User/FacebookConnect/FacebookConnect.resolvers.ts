@@ -1,4 +1,4 @@
-import { Resolvers } from "src/resolvers";
+import { Resolvers } from "src/types/resolvers";
 import {
   FacebookConnectMutationArgs,
   FacebookConnectResponse

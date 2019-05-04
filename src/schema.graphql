@@ -1,6 +1,10 @@
 type Chat {
   id: Int!
-  messages: [Message]!
+  messages: [Message]
+  passengerId: Int!
+  passenger: User!
+  driverId: Int
+  driver: User!
   participants: [User]!
   createdAt: String!
   updatedAt: String
@@ -26,6 +30,7 @@ type Mutation {
   EditPlace(placeId: Int!, name: String, isFav: Boolean): EditPlaceResponse!
   GetNearByRide: GetNearByRideResponse
   RequestRide(pickUpAddress: String!, pickUpLat: Float!, pickUpLng: Float!, dropOffAddress: String!, dropOffLat: Float!, dropOffLng: Float!, price: Float!, distance: String!, duration: String!): RequestRideResponse
+  UpdateRideStatus(rideId: Int!, status: StatusOptions!): UpdateRideStatusResponse
   CompleteEmailVerification(key: String!): CompleteEmailVerificationResponse!
   CompletePhoneVerification(phoneNumber: String!, key: String!): CompletePhoneVerificationResponse!
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
@@ -56,6 +61,7 @@ type GetMyPlacesResponse {
 
 type Query {
   GetMyPlaces: GetMyPlacesResponse!
+  GetRide(rideId: Int!): GetRideResponse!
   GetMyProfile: GetMyProfileResponse!
   GetNearbyDrivers: GetNearbyDriversResponse!
   user: User
@@ -80,8 +86,15 @@ type GetNearByRideResponse {
   ride: Ride
 }
 
+type GetRideResponse {
+  ok: Boolean!
+  error: String
+  ride: Ride
+}
+
 type Subscription {
   NearbyRideSubscription: Ride
+  RideStatusSubscription: Ride
   DriversSubscription: User
 }
 
@@ -104,9 +117,24 @@ type Ride {
   distance: String!
   duration: String!
   driver: User!
+  driverId: Int
   passenger: User!
+  passengerId: Int!
   createdAt: String!
   updatedAt: String
+}
+
+type UpdateRideStatusResponse {
+  ok: Boolean!
+  error: String
+}
+
+enum StatusOptions {
+  ACCEPTED
+  FINISHED
+  CANCELED
+  REQUESTING
+  ONROUTE
 }
 
 type CompleteEmailVerificationResponse {
@@ -166,7 +194,6 @@ type User {
   verifiedEmail: Boolean!
   firstName: String!
   lastName: String!
-  fbId: String
   age: Int
   password: String
   phoneNumber: String
@@ -179,10 +206,13 @@ type User {
   lastLng: Float
   lastLat: Float
   lastOrientation: Float
+  fbId: String
   chat: Chat
   messages: [Message]
-  rideAsDriver: [Ride]
-  rideAsPassenger: [Ride]
+  chatsAsDriver: [Chat]
+  chatsAsPassenger: [Chat]
+  ridesAsPassenger: [Ride]
+  ridesAsDriver: [Ride]
   places: [Place]
   createdAt: String!
   updatedAt: String

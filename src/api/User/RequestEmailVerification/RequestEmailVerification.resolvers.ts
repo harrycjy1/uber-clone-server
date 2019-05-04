@@ -1,4 +1,4 @@
-import { Resolvers } from "../../../resolvers";
+import { Resolvers } from "../../../types/resolvers";
 import { RequestEmailVerificationResponse } from "../../../types/graph";
 import privateResolver from "../../../utils/privateResolver";
 import User from "../../../entities/User";

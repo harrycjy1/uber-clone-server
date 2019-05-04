@@ -1,4 +1,4 @@
-import { Resolvers } from "../../../resolvers";
+import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
 // import { GetMyProfileResponse } from "../../../types/graph";
 

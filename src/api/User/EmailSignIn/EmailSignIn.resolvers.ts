@@ -1,4 +1,4 @@
-import { Resolvers } from "src/resolvers";
+import { Resolvers } from "src/types/resolvers";
 import { EmailSignInMutationArgs, EmailSignInResponse } from "src/types/graph";
 import User from "../../../entities/User";
 import createJWT from "../../../utils/createJWT";
