@@ -1,6 +1,9 @@
-import { Resolvers } from "src/types/resolvers";
-import { EmailSignInMutationArgs, EmailSignInResponse } from "src/types/graph";
 import User from "../../../entities/User";
+import {
+  EmailSignInMutationArgs,
+  EmailSignInResponse
+} from "../../../types/graph";
+import { Resolvers } from "../../../types/resolvers";
 import createJWT from "../../../utils/createJWT";
 
 const resolvers: Resolvers = {
@@ -15,12 +18,12 @@ const resolvers: Resolvers = {
         if (!user) {
           return {
             ok: false,
-            error: "There's no user with this email",
+            error: "No user found with that email",
             token: null
           };
         }
-        const checkpassword = await user.comparePassword(password);
-        if (checkpassword) {
+        const checkPassword = await user.comparePassword(password);
+        if (checkPassword) {
           const token = createJWT(user.id);
           return {
             ok: true,
@@ -30,7 +33,7 @@ const resolvers: Resolvers = {
         } else {
           return {
             ok: false,
-            error: "Wrong Password",
+            error: "Wrong password",
             token: null
           };
         }
@@ -44,5 +47,4 @@ const resolvers: Resolvers = {
     }
   }
 };
-
 export default resolvers;

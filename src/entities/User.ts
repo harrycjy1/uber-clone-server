@@ -1,27 +1,26 @@
+import bcrypt from "bcrypt";
+import { IsEmail } from "class-validator";
 import {
   BaseEntity,
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
   BeforeInsert,
   BeforeUpdate,
-  OneToMany
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
 } from "typeorm";
-import { IsEmail } from "class-validator";
-import bcrypt from "bcrypt";
-import Message from "./Message";
 import Chat from "./Chat";
-import Ride from "./Ride";
+import Message from "./Message";
 import Place from "./Place";
+import Ride from "./Ride";
 
-const HASH_ROUND = 10;
+const BCRYPT_ROUNDS = 10;
 
 @Entity()
 class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn() id: number;
 
   @Column({ type: "text", nullable: true })
   @IsEmail()
@@ -35,9 +34,6 @@ class User extends BaseEntity {
 
   @Column({ type: "text" })
   lastName: string;
-
-  @Column({ type: "text", nullable: true })
-  fbId: string;
 
   @Column({ type: "int", nullable: true })
   age: number;
@@ -56,17 +52,24 @@ class User extends BaseEntity {
 
   @Column({ type: "boolean", default: false })
   isDriving: boolean;
+
   @Column({ type: "boolean", default: false })
   isRiding: boolean;
+
   @Column({ type: "boolean", default: false })
   isTaken: boolean;
 
   @Column({ type: "double precision", default: 0 })
   lastLng: number;
+
   @Column({ type: "double precision", default: 0 })
   lastLat: number;
+
   @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
+
+  @Column({ type: "text", nullable: true })
+  fbId: string;
 
   @OneToMany(type => Chat, chat => chat.passenger)
   chatsAsPassenger: Chat[];
@@ -78,18 +81,17 @@ class User extends BaseEntity {
   messages: Message[];
 
   @OneToMany(type => Ride, ride => ride.passenger)
-  rideAsPassenger: Ride[];
+  ridesAsPassenger: Ride[];
 
   @OneToMany(type => Ride, ride => ride.driver)
-  rideAsDriver: Ride[];
+  ridesAsDriver: Ride[];
 
   @OneToMany(type => Place, place => place.user)
   places: Place[];
 
-  @CreateDateColumn()
-  createdAt: string;
-  @UpdateDateColumn()
-  updatedAt: string;
+  @CreateDateColumn() createdAt: string;
+
+  @UpdateDateColumn() updatedAt: string;
 
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
@@ -109,7 +111,7 @@ class User extends BaseEntity {
   }
 
   private hashPassword(password: string): Promise<string> {
-    return bcrypt.hash(password, HASH_ROUND);
+    return bcrypt.hash(password, BCRYPT_ROUNDS);
   }
 }
 

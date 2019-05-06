@@ -5,10 +5,13 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne
+  ManyToOne,
+  OneToOne,
+  JoinColumn
 } from "typeorm";
 import { rideStatus } from "src/types/types";
 import User from "./User";
+import Chat from "./Chat";
 
 @Entity()
 class Ride extends BaseEntity {
@@ -43,14 +46,21 @@ class Ride extends BaseEntity {
   @Column({ nullable: true })
   passengerId: number;
 
-  @ManyToOne(type => User, user => user.rideAsPassenger)
+  @ManyToOne(type => User, user => user.ridesAsPassenger)
   passenger: User;
 
   @Column({ nullable: true })
   driverId: number;
 
-  @ManyToOne(type => User, user => user.rideAsDriver, { nullable: true })
+  @ManyToOne(type => User, user => user.ridesAsDriver, { nullable: true })
   driver: User;
+
+  @Column({ nullable: true })
+  chatId: number;
+
+  @OneToOne(type => Chat, chat => chat.ride)
+  @JoinColumn() //Ride가 Chat의 owner
+  chat: Chat;
 
   @CreateDateColumn()
   createdAt: string;

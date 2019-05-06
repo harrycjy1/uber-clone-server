@@ -5,5 +5,5 @@ type GetNearByRideResponse {
 }
 
 type Mutation {
-  GetNearByRide: GetNearByRideResponse
+  GetNearByRide: GetNearByRideResponse!
 }
