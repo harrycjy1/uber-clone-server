@@ -19,7 +19,7 @@ const resolvers: Resolvers = {
         try {
           let ride: Ride | undefined;
           if (args.status === "ACCEPTED") {
-            const ride = await Ride.findOne(
+            ride = await Ride.findOne(
               {
                 id: args.rideId,
                 status: "REQUESTING"

@@ -3,14 +3,12 @@ import privateResolver from "../../../utils/privateResolver";
 import { GetChatQueryArgs, GetChatResponse } from "../../../types/graph";
 import User from "../../../entities/User";
 import Chat from "../../../entities/Chat";
-import Ride from "../../../entities/Ride";
 
 const resolvers: Resolvers = {
   Query: {
     GetChat: privateResolver(
       async (_, args: GetChatQueryArgs, { req }): Promise<GetChatResponse> => {
         const user: User = req.user;
-        await Ride.delete({});
         try {
           const chat = await Chat.findOne(
             { id: args.chatId },
