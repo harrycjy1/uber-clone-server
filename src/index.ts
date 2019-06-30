@@ -9,7 +9,7 @@ import decodeJWT from "./utils/decodeJWT";
 const PORT: string | number = process.env.port || 4000;
 const PLAYGROUND_ENDPOINT: string = "/playground";
 const GRAPHQL_ENDPOINT: string = "/graphql";
-const SUBSCRIPTION_ENDPOINT: string = "/subscription";
+const SUBSCRIPTION_ENDPOINT: string = "/subscriptions";
 
 const Options: Options = {
   port: PORT,
