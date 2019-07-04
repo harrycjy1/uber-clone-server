@@ -6,7 +6,7 @@ import Ride from "../../../entities/Ride";
 import { Between } from "typeorm";
 
 const resolvers: Resolvers = {
-  Mutation: {
+  Query: {
     GetNearByRide: privateResolver(
       async (_, __, { req }): Promise<GetNearByRideResponse> => {
         const user: User = req.user;
