@@ -24,7 +24,7 @@ const resolvers: Resolvers = {
                 id: args.rideId,
                 status: "REQUESTING"
               },
-              { relations: ["passenger"] }
+              { relations: ["passenger", "driver"] }
             );
             if (ride) {
               ride.driver = user;
@@ -49,24 +49,28 @@ const resolvers: Resolvers = {
             pubSub.publish("rideUpdate", { RideStatusSubscription: ride });
             return {
               ok: true,
-              error: null
+              error: null,
+              rideId: ride.id
             };
           } else {
             return {
               ok: false,
-              error: "there is no ride"
+              error: "there is no ride",
+              rideId: null
             };
           }
         } catch (error) {
           return {
             ok: false,
-            error: error.message
+            error: error.message,
+            rideId: null
           };
         }
       } else {
         return {
           ok: false,
-          error: "you are not a driver"
+          error: "you are not a driver",
+          rideId: null
         };
       }
     }

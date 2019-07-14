@@ -21,7 +21,7 @@ const resolvers: Resolvers = {
             passenger: user
           }).save();
           pubSub.publish("rideRequest", { NearbyRideSubscription: ride });
-          user.isRiding = true;
+          // user.isRiding = true;
           user.save();
           return {
             ok: true,
