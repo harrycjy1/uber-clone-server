@@ -10,7 +10,10 @@ const resolvers: Resolvers = {
       async (_, args: GetRideQueryArgs, { req }): Promise<GetRideResponse> => {
         const user: User = req.user;
         try {
-          const ride = await Ride.findOne({ id: args.rideId });
+          const ride = await Ride.findOne(
+            { id: args.rideId },
+            { relations: ["passenger", "driver"] }
+          );
           if (ride) {
             if (ride.driverId === user.id || ride.passengerId === user.id) {
               return { ok: true, error: null, ride };
