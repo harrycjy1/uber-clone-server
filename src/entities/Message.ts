@@ -19,6 +19,9 @@ class Message extends BaseEntity {
   @Column({ type: "text" })
   text: string;
 
+  @Column({ nullable: true })
+  userId: number;
+
   @ManyToOne(type => User, user => user.messages)
   user: User;
 
